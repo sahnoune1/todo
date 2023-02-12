@@ -1,1 +1,1 @@
-console.log("fuck you");
+(()=>{const t=document.querySelector(".add"),e=document.querySelector("form");t.addEventListener("click",(()=>{const t=document.createElement("label");t.setAttribute("for","title"),e.appendChild(t);const n=document.createElement("input");n.setAttribute("type","text"),n.setAttribute("id","title"),n.setAttribute("name","title"),e.appendChild(n)}))})();
