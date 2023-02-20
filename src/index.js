@@ -2,6 +2,7 @@ const add = document.querySelector(".add");
 const inside = document.querySelector(".inside");
 const form1 = document.querySelector(".form1");
 const main = document.querySelector(".main");
+const middle = document.querySelector(".middle");
 let formId = 1;
 let array = [];
 let currentProject = null;
@@ -59,43 +60,48 @@ add.addEventListener("click", () => {
     const elements = document.querySelectorAll(".last");
     console.log(elements);
     let projectInputs = [];
-    for (let i = 0; i < array.length; i++) {
+    for (let i = 0; i < elements.length; i++) {
       elements[i].addEventListener("click", () => {
-        const page = document.createElement("div");
-        page.setAttribute("class", "page");
+        let page = document.querySelector(`.page.project-${i}`);
 
-        const head = document.createElement("div");
-        head.setAttribute("class", "head");
-        head.innerHTML = `project${i}`;
+        if (!page) {
+          // Create a new page element
+          page = document.createElement("div");
+          page.setAttribute("class", `page project-${i}`);
 
-        const middle = document.createElement("div");
-        middle.setAttribute("class", "middle");
+          const head = document.createElement("div");
+          head.setAttribute("class", "head");
+          head.innerHTML = `project${i}`;
 
-        const lol = document.createElement("div");
-        lol.setAttribute("class", "lol");
+          const middle = document.createElement("div");
+          middle.setAttribute("class", "middle");
 
-        lol.innerHTML = projectInputs[i] || "";
+          const lol = document.createElement("div");
+          lol.setAttribute("class", "lol");
+          lol.innerHTML = projectInputs[i] || "";
 
-        const foot = document.createElement("div");
-        foot.setAttribute("class", "foot");
+          const foot = document.createElement("div");
+          foot.setAttribute("class", "foot");
 
-        middle.appendChild(lol);
-        page.appendChild(head);
-        page.appendChild(middle);
-        page.appendChild(foot);
-        main.appendChild(page);
+          middle.appendChild(lol);
+          page.appendChild(head);
+          page.appendChild(middle);
+          page.appendChild(foot);
+          main.appendChild(page);
 
+          // Add event listeners
+          head.addEventListener("click", () => {
+            lol.innerHTML = `seif${i}`;
+            projectInputs[i] = lol.innerHTML;
+          });
+        }
+
+        // Hide current project and show current one
         if (currentProject !== null) {
           currentProject.style.display = "none";
         }
         page.style.display = "block";
         currentProject = page;
-
-        head.addEventListener("click", () => {
-          lol.innerHTML = `seif${i}`;
-
-          projectInputs[i] = lol.innerHTML;
-        });
       });
     }
   });
