@@ -9,6 +9,7 @@ let currentProject = null;
 let pages = {};
 let test = [];
 let store;
+let change;
 /*create the add event*/
 add.addEventListener("click", () => {
   const form = document.createElement("form");
@@ -59,6 +60,7 @@ add.addEventListener("click", () => {
     console.log(array);
     const elements = document.querySelectorAll(".last");
     console.log(elements);
+    titleInput.value = "";
     let projectInputs = [];
     for (let i = 0; i < elements.length; i++) {
       elements[i].addEventListener("click", () => {
@@ -76,14 +78,9 @@ add.addEventListener("click", () => {
           const middle = document.createElement("div");
           middle.setAttribute("class", "middle");
 
-          const lol = document.createElement("div");
-          lol.setAttribute("class", "lol");
-          lol.innerHTML = projectInputs[i] || "";
-
           const foot = document.createElement("div");
           foot.setAttribute("class", "foot");
 
-          middle.appendChild(lol);
           page.appendChild(head);
           page.appendChild(middle);
           page.appendChild(foot);
@@ -91,8 +88,40 @@ add.addEventListener("click", () => {
 
           // Add event listeners
           head.addEventListener("click", () => {
-            lol.innerHTML = `seif${i}`;
-            projectInputs[i] = lol.innerHTML;
+            if (!projectInputs[i]) {
+              const formm = document.createElement("form");
+              formm.setAttribute("class", `form${i}`);
+              middle.appendChild(formm);
+
+              const titleLabel = document.createElement("label");
+              titleLabel.setAttribute("for", "title");
+              formm.appendChild(titleLabel);
+
+              const titleInput1 = document.createElement("input");
+              titleInput1.setAttribute("type", "text");
+              titleInput1.setAttribute("id", "title");
+              titleInput1.setAttribute("name", "title");
+              formm.appendChild(titleInput1);
+
+              const submitLabel = document.createElement("label");
+              submitLabel.setAttribute("for", "submit");
+              formm.appendChild(submitLabel);
+              const submitInput = document.createElement("input");
+              submitInput.setAttribute("type", "submit");
+              submitInput.setAttribute("id", "submit");
+              submitInput.setAttribute("value", "submit");
+              formm.appendChild(submitInput);
+
+              projectInputs[i] = formm;
+              formm.addEventListener("submit", (event) => {
+                event.preventDefault();
+                change = titleInput1.value;
+                foot.innerHTML = change;
+                titleInput1.value = "";
+                middle.removeChild(formm);
+                projectInputs = [];
+              });
+            }
           });
         }
 

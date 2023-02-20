@@ -232,7 +232,7 @@ img {
   font-size: 20px;
 }
 .side-box2 {
-  border: 1px solid red;
+  border: 1px solid rgb(24, 146, 44);
   display: flex;
   flex-direction: column;
 
@@ -258,6 +258,14 @@ img {
 .list {
   border: 1px solid red;
 }
+.last {
+  font-size: 25px;
+}
+.last:hover {
+  background-color: rgb(133, 133, 134);
+  cursor: pointer;
+  border-radius: 10px;
+}
 .details:hover {
   cursor: pointer;
 }
@@ -270,4 +278,24 @@ img {
   background-color: aliceblue;
   padding: 10px;
   padding-left: 40px;
+  display: flex;
+}
+
+.head {
+  border: 1px solid black;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  font-size: 50px;
+}
+.head:hover {
+  background-color: rgb(133, 133, 134);
+  cursor: pointer;
+  border-radius: 5px;
+}
+.middle {
+  border: 1px solid green;
+  margin-bottom: 20px;
+}
+.foot {
+  border: 1px solid red;
 }
