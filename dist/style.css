@@ -296,6 +296,18 @@ img {
   border: 1px solid green;
   margin-bottom: 20px;
 }
+.formMiddle {
+  display: flex;
+  flex-direction: column;
+}
+#titles {
+  margin-bottom: 10px;
+}
+#submits {
+  width: 50px;
+  margin-left: 75px;
+  margin-top: 10px;
+}
 .foot {
   border: 1px solid red;
 }
