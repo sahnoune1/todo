@@ -303,7 +303,7 @@ img {
   padding: 10px;
   border-radius: 10px;
   background-color: rgb(224, 224, 224);
-  width: 95%;
+  width: 900px;
 }
 .head:hover {
   background-color: rgb(110, 110, 255);
@@ -327,6 +327,11 @@ img {
   border-radius: 10px;
   padding: 5px;
 }
+#date {
+  margin: 10px;
+  border-radius: 10px;
+  padding: 5px;
+}
 #titless {
   display: inline-block;
   margin: 10px;
@@ -346,7 +351,7 @@ img {
   cursor: pointer;
 }
 .foot {
-  width: 800px;
+  width: 948px;
 }
 
 .fat {
@@ -366,23 +371,33 @@ img {
   cursor: pointer;
 }
 .foot1 {
-  border: 1px solid yellow;
-  width: 100px;
   padding: 5px;
 }
 .foot2 {
   border: 1px solid yellow;
-  width: 100px;
+  width: 130px;
   padding: 5px;
+  background-color: white;
 }
 .foot3 {
   border: 1px solid yellow;
-  width: 100px;
+  width: 130px;
   padding: 5px;
+  background-color: white;
 }
 .foot4 {
   border: 1px solid yellow;
   width: 60px;
   padding: 5px;
   border-radius: 8px;
+}
+.foot5 {
+  border: 1px solid yellow;
+  width: 60px;
+  padding: 5px;
+  border-radius: 8px;
+}
+.foot4:hover {
+  background-color: rgb(44, 148, 30);
+  cursor: pointer;
 }
