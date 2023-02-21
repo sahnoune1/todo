@@ -10,7 +10,6 @@
 }
 
 body {
-  height: 100vh;
   letter-spacing: 2px;
   word-spacing: 2px;
   color: #000000;
@@ -19,6 +18,7 @@ body {
   font-style: normal;
   font-variant: normal;
   text-transform: none;
+  height: 100vh;
 }
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 
@@ -174,10 +174,9 @@ img {
 
 /*start*/
 .container {
-  width: 100%;
-  height: 100%;
+  height: 100vh;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 2fr 2fr;
   grid-template-rows: 1fr 2fr 2fr;
   grid-template-areas:
     "header header header"
@@ -194,6 +193,7 @@ img {
   padding-left: 20px;
   font-size: 25px;
   color: rgb(231, 230, 230);
+  height: 150px;
 }
 
 /*sideeeeeeeeeee*/
@@ -204,6 +204,8 @@ img {
   border-right: 1px solid grey;
   display: grid;
   grid-template-rows: 1fr 2fr;
+  height: calc(100vh - 150px);
+  overflow: auto;
 }
 
 .side-box1 {
@@ -247,9 +249,12 @@ img {
 }
 .add {
   border: 1px solid red;
+  font-size: 20px;
+  border-radius: 50px;
+  margin-top: 10px;
 }
 .add:hover {
-  background-color: blue;
+  background-color: rgb(110, 110, 255);
   cursor: pointer;
 }
 .inside {
@@ -257,12 +262,18 @@ img {
 }
 .list {
   border: 1px solid red;
+  display: flex;
+  margin-top: 5px;
+  flex-direction: column;
+  align-items: center;
 }
 .last {
   font-size: 25px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid grey;
 }
 .last:hover {
-  background-color: rgb(133, 133, 134);
+  background-color: rgb(110, 110, 255);
   cursor: pointer;
   border-radius: 10px;
 }
@@ -275,10 +286,13 @@ img {
 .main {
   grid-area: main;
   /* border: 1px solid black; */
-  background-color: aliceblue;
+  background-color: rgb(255, 255, 255);
   padding: 10px;
   padding-left: 40px;
   display: flex;
+
+  height: calc(100vh - 150px);
+  overflow: auto;
 }
 
 .head {
@@ -286,28 +300,89 @@ img {
   margin-bottom: 20px;
   margin-top: 20px;
   font-size: 50px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: rgb(224, 224, 224);
+  width: 95%;
 }
 .head:hover {
-  background-color: rgb(133, 133, 134);
+  background-color: rgb(110, 110, 255);
   cursor: pointer;
   border-radius: 5px;
 }
 .middle {
-  border: 1px solid green;
+  border-radius: 10px;
   margin-bottom: 20px;
+  width: 300px;
+  background-color: rgb(224, 224, 224);
 }
 .formMiddle {
   display: flex;
   flex-direction: column;
+  border: 1px solid rgb(110, 110, 255);
+  border-radius: 10px;
 }
 #titles {
-  margin-bottom: 10px;
+  margin: 10px;
+  border-radius: 10px;
+  padding: 5px;
+}
+#titless {
+  display: inline-block;
+  margin: 10px;
+  border-radius: 10px;
+  padding: 5px;
+  height: 100px;
 }
 #submits {
   width: 50px;
-  margin-left: 75px;
+  margin-left: 200px;
   margin-top: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+#submits:hover {
+  background-color: rgb(110, 110, 255);
+  cursor: pointer;
 }
 .foot {
-  border: 1px solid red;
+  width: 800px;
+}
+
+.fat {
+  border: 1px solid green;
+  border-radius: 8px;
+
+  padding: 5px;
+  display: flex;
+  justify-content: space-around;
+  width: 95%;
+  height: 50px;
+  background-color: rgb(224, 224, 224);
+  margin-bottom: 5px;
+}
+.fat:hover {
+  background-color: rgb(110, 110, 255);
+  cursor: pointer;
+}
+.foot1 {
+  border: 1px solid yellow;
+  width: 100px;
+  padding: 5px;
+}
+.foot2 {
+  border: 1px solid yellow;
+  width: 100px;
+  padding: 5px;
+}
+.foot3 {
+  border: 1px solid yellow;
+  width: 100px;
+  padding: 5px;
+}
+.foot4 {
+  border: 1px solid yellow;
+  width: 60px;
+  padding: 5px;
+  border-radius: 8px;
 }

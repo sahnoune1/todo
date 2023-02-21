@@ -12,6 +12,7 @@ let store;
 let change1;
 let change2;
 let change3;
+let j = 0;
 /*create the add event*/
 add.addEventListener("click", () => {
   let form = document.querySelector(".form1");
@@ -19,7 +20,6 @@ add.addEventListener("click", () => {
     form = document.createElement("form");
     form.setAttribute("class", "form1");
     inside.appendChild(form);
-    console.log(formId);
 
     const titleLabel = document.createElement("label");
     titleLabel.setAttribute("for", "title");
@@ -29,6 +29,8 @@ add.addEventListener("click", () => {
     titleInput.setAttribute("type", "text");
     titleInput.setAttribute("id", "title");
     titleInput.setAttribute("name", "title");
+    titleInput.setAttribute("maxlength", "10"); // set maximum length to 20
+    titleInput.setAttribute("minlength", "3"); // set minimum length to 3
     form.appendChild(titleInput);
 
     const submitLabel = document.createElement("label");
@@ -50,8 +52,6 @@ add.addEventListener("click", () => {
       }
 
       test.push(store);
-      console.log(store);
-      console.log(test);
 
       const list = document.querySelector(".list");
       const div = document.createElement("div");
@@ -60,9 +60,9 @@ add.addEventListener("click", () => {
       div.innerHTML = store;
       list.appendChild(div);
       array.push(div);
-      console.log(array);
+
       const elements = document.querySelectorAll(".last");
-      console.log(elements);
+
       titleInput.value = "";
       let projectInputs = [];
       for (let i = 0; i < elements.length; i++) {
@@ -107,6 +107,8 @@ add.addEventListener("click", () => {
                 titleInput1.setAttribute("type", "text");
                 titleInput1.setAttribute("id", "titles");
                 titleInput1.setAttribute("name", "title");
+                titleInput1.setAttribute("placeholder", "title");
+                titleInput1.setAttribute("required", true);
                 formm.appendChild(titleInput1);
 
                 const titleLabel2 = document.createElement("label");
@@ -115,8 +117,13 @@ add.addEventListener("click", () => {
 
                 const titleInput2 = document.createElement("input");
                 titleInput2.setAttribute("type", "text");
-                titleInput2.setAttribute("id", "titles");
+                titleInput2.setAttribute("id", "titless");
                 titleInput2.setAttribute("name", "title");
+                titleInput2.setAttribute(
+                  "placeholder",
+                  "Description of the project "
+                );
+                titleInput2.setAttribute("required", true);
                 formm.appendChild(titleInput2);
 
                 const titleLabel3 = document.createElement("label");
@@ -127,6 +134,8 @@ add.addEventListener("click", () => {
                 titleInput3.setAttribute("type", "text");
                 titleInput3.setAttribute("id", "titles");
                 titleInput3.setAttribute("name", "title");
+                titleInput3.setAttribute("placeholder", "Date");
+                titleInput3.setAttribute("required", true);
                 formm.appendChild(titleInput3);
 
                 const submitLabel = document.createElement("label");
@@ -140,22 +149,32 @@ add.addEventListener("click", () => {
                 formm.appendChild(submitInput);
 
                 projectInputs[i] = formm;
+                console.log(projectInputs[i]);
                 formm.addEventListener("submit", (event) => {
+                  event.preventDefault();
+
                   const foot1 = document.createElement("div");
                   foot1.setAttribute("class", "foot1");
                   const foot2 = document.createElement("div");
                   foot2.setAttribute("class", "foot2");
                   const foot3 = document.createElement("div");
                   foot3.setAttribute("class", "foot3");
-                  event.preventDefault();
+                  const foot4 = document.createElement("button");
+                  foot4.setAttribute("class", "foot4");
+                  foot4.innerHTML = "delete";
 
                   const foott = document.createElement("div");
-                  foott.setAttribute("class", `foot${i}`);
+                  foott.classList.add("fat", `fat${i + j}`);
+                  // const fat = document.querySelector(`.fat${i + j}`);
+                  // console.log(foott);
+                  // console.log(fat);
 
                   foott.appendChild(foot1);
                   foott.appendChild(foot2);
                   foott.appendChild(foot3);
+                  foott.appendChild(foot4);
                   foot.appendChild(foott);
+
                   change1 = titleInput1.value;
                   foot1.innerHTML = change1;
 
@@ -164,13 +183,17 @@ add.addEventListener("click", () => {
 
                   change3 = titleInput3.value;
                   foot3.innerHTML = change3;
+
                   titleInput1.value = "";
                   titleInput2.value = "";
                   titleInput3.value = "";
                   middle.removeChild(formm);
                   projectInputs = [];
-                  console.log(i);
-                  i++;
+                  j++;
+
+                  foot4.addEventListener("click", () => {
+                    foott.remove();
+                  });
                 });
               }
             });
