@@ -10,6 +10,16 @@ function firstSubmit(
   currentProject,
   main
 ) {
+  // Get the list element
+  const list = document.querySelector(".list");
+
+  // Check if there is any stored content
+  const storedListContent = localStorage.getItem("listContent");
+  if (storedListContent) {
+    list.innerHTML = storedListContent; // Insert the stored content into the list element
+  }
+
+  // Add a submit event listener to the form
   form.addEventListener("submit", (event) => {
     event.preventDefault();
     store = titleInput.value;
@@ -20,15 +30,12 @@ function firstSubmit(
 
     test.push(store);
 
-    const list = document.querySelector(".list");
     const div = document.createElement("div");
     div.setAttribute("class", "last");
 
     div.innerHTML = store;
     list.appendChild(div);
     array.push(store);
-
-    // localStorage.setItem("projects", JSON.stringify(array));
 
     const elements = document.querySelectorAll(".last");
 
@@ -38,6 +45,9 @@ function firstSubmit(
     for (let i = 0; i < elements.length; i++) {
       addProject(elements[i], i, projectInputs, main, change1, currentProject);
     }
+
+    // Save the updated list content to local storage
+    localStorage.setItem("listContent", list.innerHTML);
   });
 }
 

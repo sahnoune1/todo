@@ -12,24 +12,6 @@ let store;
 let change1;
 let array = [];
 
-// // Check if there are any projects in local storage
-// if (localStorage.getItem("projects")) {
-//   // Retrieve the array of projects
-//   array = JSON.parse(localStorage.getItem("projects"));
-
-//   // Loop through the array of projects and add them to the page
-//   for (let i = 0; i < array.length; i++) {
-//     const list = document.querySelector(".list");
-//     const div = document.createElement("div");
-//     div.setAttribute("class", "last");
-
-//     div.innerHTML = array[i];
-//     list.appendChild(div);
-
-//     addProject(div, i, []);
-//   }
-// }
-
 /*create the add event*/
 add.addEventListener("click", () => {
   let form = document.querySelector(".form1");
