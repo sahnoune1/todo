@@ -38,7 +38,7 @@ function createForm(
     titleInput1.value = "";
 
     middle.removeChild(formm);
-    projectInputs = [];
+    projectInputs[i] = null;
 
     createDelete(foot4, foott, middle);
 
