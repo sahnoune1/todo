@@ -13,12 +13,6 @@ function firstSubmit(
   // Get the list element
   const list = document.querySelector(".list");
 
-  // Check if there is any stored content
-  const storedListContent = localStorage.getItem("listContent");
-  if (storedListContent) {
-    list.innerHTML = storedListContent; // Insert the stored content into the list element
-  }
-
   // Add a submit event listener to the form
   form.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -78,9 +72,6 @@ function firstSubmit(
         currentProject = page;
       });
     }
-
-    // Save the updated list content to local storage
-    localStorage.setItem("listContent", list.innerHTML);
   });
 }
 
