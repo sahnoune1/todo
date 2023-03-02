@@ -1,6 +1,7 @@
 import { nextDay } from "date-fns";
 import { createDelete } from "./createDelete";
-import { createEditFunction } from "./createEdit";
+// import { createEditFunction } from "./createEdit";
+import { createEdit } from "./editForm";
 
 function createForm(
   page,
@@ -10,14 +11,14 @@ function createForm(
   middle,
   projectInputs,
   i,
-  titleInput1,
-  nextArray
+  titleInput1
 ) {
-  const storedFoot = JSON.parse(localStorage.getItem("listFoot"));
+  const uniqueKey = `listFoot${i}`;
+  let nextArray = JSON.parse(localStorage.getItem(uniqueKey)) || [];
 
-  if (storedFoot) {
-    nextArray = storedFoot;
-  }
+  // if (storedFoot) {
+  //   nextArray = storedFoot;
+  // }
 
   formm.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -44,11 +45,11 @@ function createForm(
     change1 = titleInput1.value;
     foot1.innerHTML = change1;
 
-    if (!nextArray[i]) {
-      nextArray[i] = [];
+    if (!nextArray) {
+      nextArray = [];
     }
 
-    nextArray[i].push(foot1.innerHTML);
+    nextArray.push(foot1.innerHTML);
 
     titleInput1.value = "";
     middle.removeChild(formm);
@@ -72,34 +73,70 @@ function createForm(
         const allInput = page.querySelectorAll(".foot1");
         console.log(allInput);
 
-        nextArray[i] = []; // reset the array for this index
+        nextArray = []; // reset the array for this index
 
         for (let x = 0; x < allInput.length; x++) {
-          nextArray[i].push(allInput[x].innerHTML);
+          nextArray.push(allInput[x].innerHTML);
         }
 
         // Save data to local storage
-        localStorage.setItem("listFoot", JSON.stringify(nextArray));
+        localStorage.setItem(uniqueKey, JSON.stringify(nextArray));
         console.log(nextArray);
       });
     }
 
-    // foot4.addEventListener("click", () => {
-    //   const index = j;
-    //   nextArray[i].splice(index, 1);
-    //   foott.remove();
-    //   middle.innerHTML = "";
+    foot5.addEventListener("click", () => {
+      let check2 = false;
+      let editForm = middle.querySelector(`.middleForm.form${i}`);
+      if (editForm) {
+        check2 = true;
+        middle.removeChild(editForm);
+      }
 
-    //   // Save data to local storage
-    //   localStorage.setItem("listFoot", JSON.stringify(nextArray));
-    //   console.log(nextArray);
-    // });
+      if (!check2 && !middle.innerHTML) {
+        editForm = document.createElement("form");
+        editForm.setAttribute("class", `middleForm form${i}`);
+        middle.appendChild(editForm);
 
-    createEditFunction(foot5, middle, i, foot1, change1);
+        const titleInput2 = document.createElement("input");
+        const submitInput1 = document.createElement("input");
+        const cancel = document.createElement("input");
+
+        createEdit(editForm, titleInput2, submitInput1, cancel, change1);
+
+        cancel.addEventListener("click", () => {
+          middle.innerHTML = "";
+        });
+
+        editForm.addEventListener("submit", (event) => {
+          // Add a variable to store the index of the item being edited
+          const index = nextArray.indexOf(change1);
+          console.log(index);
+          console.log(nextArray[index]);
+          event.preventDefault();
+          foot1.innerHTML = titleInput2.value;
+          change1 = titleInput2.value;
+          titleInput2.innerHTML = "";
+          middle.removeChild(editForm);
+
+          // Update the array with the edited item
+          // nextArray[index] = change1;
+          // Save data to local storage
+          const allInput = page.querySelectorAll(".foot1");
+          nextArray = []; // reset the array for this index
+
+          for (let x = 0; x < allInput.length; x++) {
+            nextArray.push(allInput[x].innerHTML);
+          }
+          localStorage.setItem(uniqueKey, JSON.stringify(nextArray));
+        });
+      }
+    });
+
     // Save data to local storage
-    localStorage.setItem("listFoot", JSON.stringify(nextArray));
+    localStorage.setItem(uniqueKey, JSON.stringify(nextArray));
 
-    console.log(nextArray);
+    console.log("really?");
   });
 }
 

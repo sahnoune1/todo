@@ -11,7 +11,6 @@ let test = [];
 let store;
 let change1;
 let array = [];
-let nextArray = [];
 
 /*create the add event*/
 add.addEventListener("click", () => {
@@ -34,8 +33,7 @@ add.addEventListener("click", () => {
       array,
       change1,
       currentProject,
-      main,
-      nextArray
+      main
     );
   }
 });

@@ -8,8 +8,7 @@ function firstSubmit(
   array,
   change1,
   currentProject,
-  main,
-  nextArray
+  main
 ) {
   // Get the list element
   const list = document.querySelector(".list");
@@ -52,16 +51,7 @@ function firstSubmit(
             main.appendChild(page);
 
             // Add event listeners
-            createMain(
-              page,
-              head,
-              projectInputs,
-              i,
-              middle,
-              foot,
-              change1,
-              nextArray
-            );
+            createMain(page, head, projectInputs, i, middle, foot, change1);
           }
 
           // Hide current project and show current one
@@ -126,16 +116,7 @@ function firstSubmit(
           main.appendChild(page);
 
           // Add event listeners
-          createMain(
-            page,
-            head,
-            projectInputs,
-            i,
-            middle,
-            foot,
-            change1,
-            nextArray
-          );
+          createMain(page, head, projectInputs, i, middle, foot, change1);
         }
 
         // Hide current project and show current one
