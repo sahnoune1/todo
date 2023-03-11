@@ -1,5 +1,6 @@
 import { createMain } from "./createMain";
 import { storedList } from "./storedList";
+import { deleteList } from "./deleteList";
 function firstSubmit(form, store, test, titleInput, array, change1, main) {
   // Get the list element
   const list = document.querySelector(".list");
@@ -26,6 +27,8 @@ function firstSubmit(form, store, test, titleInput, array, change1, main) {
 
       //giving actions to elements list
       storedList(list, titleInput, change1, main, elements);
+      //deleting elemets list
+      deleteList(divx, list, contour, array, titleInput, change1, main);
     }
   }
 
@@ -64,47 +67,7 @@ function firstSubmit(form, store, test, titleInput, array, change1, main) {
     storedList(list, titleInput, change1, main, elements);
 
     //deleting elemets list
-    divx.addEventListener("click", (event) => {
-      const elementValue = event.target.parentNode.firstChild.innerHTML;
-      list.removeChild(contour);
-      const index = array.findIndex((item) => item === elementValue);
-      let page = document.querySelector(`.project-${index}`);
-
-      if (index !== -1) {
-        array.splice(index, 1);
-        if (page) {
-          page.remove();
-        }
-        localStorage.removeItem(`listFoot${index}`);
-
-        // Update the list foot keys in localStorage
-        for (let i = index; i < array.length; i++) {
-          const key = `listFoot${i}`;
-          const value = localStorage.getItem(`listFoot${i + 1}`);
-          if (value) {
-            localStorage.setItem(key, value);
-            localStorage.removeItem(`listFoot${i + 1}`);
-          }
-          // Update the corresponding page index
-          const page = document.querySelector(`.project-${i + 1}`);
-          if (page) {
-            page.classList.remove(`project-${i + 1}`);
-            page.classList.add(`project-${i}`);
-          }
-        }
-
-        localStorage.setItem("listItems", JSON.stringify(array));
-        // call storedList function again with the updated list and elements
-        storedList(
-          list,
-          titleInput,
-          change1,
-          main,
-          document.querySelectorAll(".last")
-        );
-      }
-      console.log(list.children.length);
-    });
+    deleteList(divx, list, contour, array, titleInput, change1, main);
   });
 }
 
