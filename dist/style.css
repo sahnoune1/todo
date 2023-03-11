@@ -268,11 +268,14 @@ img {
   margin-top: 5px;
   flex-direction: column;
   align-items: center;
+  border: 1px solid rgb(110, 110, 255);
+  border-radius: 10px;
+  padding: 10px;
+  width: 230px;
 }
 .last {
-  font-size: 25px;
+  font-size: 18px;
   margin-bottom: 5px;
-  border-bottom: 1px solid grey;
 }
 .last:hover {
   background-color: rgb(110, 110, 255);
@@ -284,6 +287,16 @@ img {
 }
 .contour {
   display: flex;
+  justify-content: space-between;
+
+  width: 220px;
+  border-bottom: 1px solid grey;
+}
+.x {
+  font-size: 11px;
+  margin: 5px;
+
+  margin-top: -1px;
 }
 
 /*maaaaaaaaaaaaaaaaaain*/
