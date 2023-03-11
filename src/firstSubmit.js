@@ -1,15 +1,6 @@
 import { createMain } from "./createMain";
 import { storedList } from "./storedList";
-function firstSubmit(
-  form,
-  store,
-  test,
-  titleInput,
-  array,
-  change1,
-  currentProject,
-  main
-) {
+function firstSubmit(form, store, test, titleInput, array, change1, main) {
   // Get the list element
   const list = document.querySelector(".list");
 
@@ -34,7 +25,7 @@ function firstSubmit(
       const elements = document.querySelectorAll(".last");
 
       //giving actions to elements list
-      storedList(titleInput, change1, currentProject, main, elements);
+      storedList(list, titleInput, change1, main, elements);
     }
   }
 
@@ -69,7 +60,8 @@ function firstSubmit(
     localStorage.setItem("listItems", JSON.stringify(array));
 
     const elements = document.querySelectorAll(".last");
-    storedList(titleInput, change1, currentProject, main, elements);
+    console.log(elements.length);
+    storedList(list, titleInput, change1, main, elements);
 
     //deleting elemets list
     divx.addEventListener("click", (event) => {
@@ -102,7 +94,16 @@ function firstSubmit(
         }
 
         localStorage.setItem("listItems", JSON.stringify(array));
+        // call storedList function again with the updated list and elements
+        storedList(
+          list,
+          titleInput,
+          change1,
+          main,
+          document.querySelectorAll(".last")
+        );
       }
+      console.log(list.children.length);
     });
   });
 }

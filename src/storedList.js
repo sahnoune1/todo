@@ -1,10 +1,10 @@
 import { createMain } from "./createMain";
 
-function storedList(titleInput, change1, currentProject, main, elements) {
+function storedList(list, titleInput, change1, main, elements) {
   titleInput.value = "";
   let projectInputs = [];
 
-  for (let i = 0; i < elements.length; i++) {
+  for (let i = 0; i < list.children.length; i++) {
     elements[i].addEventListener("click", () => {
       let page = document.querySelector(`.page.project-${i}`);
 
@@ -32,12 +32,16 @@ function storedList(titleInput, change1, currentProject, main, elements) {
         createMain(page, head, projectInputs, i, middle, foot, change1);
       }
 
-      // Hide current project and show current one
-      if (currentProject !== null) {
-        currentProject.style.display = "none";
+      // Check if a page is already displayed and hide it
+      const displayedPage = document.querySelector(
+        ".page:not([style*='none'])"
+      );
+      if (displayedPage && displayedPage !== page) {
+        displayedPage.style.display = "none";
       }
+
+      // Show the current page
       page.style.display = "block";
-      currentProject = page;
     });
   }
 }

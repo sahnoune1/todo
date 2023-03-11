@@ -6,7 +6,6 @@ const add = document.querySelector(".add");
 const inside = document.querySelector(".inside");
 const main = document.querySelector(".main");
 
-let currentProject = null;
 let test = [];
 let store;
 let change1;
@@ -25,15 +24,6 @@ add.addEventListener("click", () => {
     create(form, titleInput, submitInput);
 
     /*create the event for the first submit*/
-    firstSubmit(
-      form,
-      store,
-      test,
-      titleInput,
-      array,
-      change1,
-      currentProject,
-      main
-    );
+    firstSubmit(form, store, test, titleInput, array, change1, main);
   }
 });
